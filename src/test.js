@@ -37,7 +37,7 @@ const html = "<!DOCTYPE html>\n" +
     "<head>\n" +
     "    <meta charset='UTF-8'>\n" +
     "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
-    "    <title>Thomso'24 Invitation</title>\n" +
+    "    <title>Thomso'23 Invitation</title>\n" +
     "</head>\n" +
     "<body style='font-family: Arial, sans-serif; color: #333; line-height: 1.6;'>\n" +
     "\n" +
@@ -90,9 +90,9 @@ const html = "<!DOCTYPE html>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "\n" +
-    "        <div style='border-top: 1px solid #ddd; padding-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;'>\n" +
+    "        <div style='border-top: 1px solid #ddd; padding-top: 20px; display: flex; justify-content: space-between; align-items: center;'>\n" +
     "            \n" +
-    "            <div style='width: 60%; text-align: center;padding-top:20px;'>\n" +
+    "            <div style='width: 60%; text-align: center;padding-top:20px'>\n" +
     "                <img src='https://i.postimg.cc/vHFjr5pK/thomso.png' alt='Thomso Logo' style='max-width: 170px;'>\n" +
     "            </div>\n" +
     "\n" +
@@ -104,7 +104,7 @@ const html = "<!DOCTYPE html>\n" +
     "                    <li>Aayush: <a href='tel:7067627106' style='color: #1a73e8;'>7067627106</a></li>\n" +
     "                    <li>Anunjay: <a href='tel:9128004995' style='color: #1a73e8;'>9128004995</a></li>\n" +
     "                    <li>Abhishek: <a href='tel:6201151210' style='color: #1a73e8;'>6201151210</a></li>\n" +
-    "                    <li style='margin-top: 10px;'>Thomso'24 Organizing Committee</li>\n" +
+    "                    <li style='margin-top: 10px;'>Thomso'24 OrganiZing Committee</li>\n" +
     "                </ul>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -120,7 +120,7 @@ const html = "<!DOCTYPE html>\n" +
 app.use(express.json())
 // Endpoint to trigger mass email
 app.post('/', async (req, res) => {
-    const data =   `khushiforwork17@gmail.com
+    const data1 =   `khushiforwork17@gmail.com
 keshav_g1@ce.iitr.ac.in
 draj56227@gmail.com
 nagpal.chinmay2@gmail.com
@@ -20178,9 +20178,6 @@ ananttyagi.442@gmail.com
 kambojloveleen@gmail.com
 avishisingh1924@gmail.com
 harshitsolanki890@gmail.com
-nagpal.chinmay2@gmail.com
-grignardreagent238@gmail.com
-aayush.thomso@gmail.com
 anupriya_k@ece.iitr.ac.in
 anikasharma70598@gmail.com
 21501242manshi@lb.du.ac.in
@@ -20837,29 +20834,29 @@ rks.electo09@gmail.com
 2020uch1382@mnit.ac.in
 manavjoshi883@gmail.com
 ̄̄iammykhan22@gmail.com`
-    const data1 =  'keshavgarg927@gmail.com'
+    const data =  'draj56227@gmail.com'
     const recipients = data.split('\n')
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const batchSize = 50; // Maximum allowed by AWS SES
     const totalRecipients = recipients.length;
     const numBatches = Math.ceil(totalRecipients / batchSize);
     console.log(numBatches)
-    for (let i = 0; i < numBatches; i++) {
-        const batchRecipients = recipients.slice(i * batchSize, (i + 1) * batchSize);
-        const subject = "Invitation to Thomso '24"
+    // for (let i = 415; i < numBatches; i++) {
+    //     const batchRecipients = recipients.slice(i * batchSize, (i + 1) * batchSize);
+        const subject = "Welcome to Thomso'24"
         const body = html;
         try {
-            await sendBulkEmails(batchRecipients, subject, body);
-            console.log('Batch ',i+1," Done", "Starting from ",batchRecipients[0]," to ",batchRecipients[batchRecipients.length-1]);
-            console.log('waiting')
+            await sendBulkEmails(recipients, subject, body);
+            // console.log('Batch ',i+1," Done", "Starting from ",batchRecipients[0]," to ",batchRecipients[batchRecipients.length-1]);
+            // console.log('waiting')
             await delay(5000);
         } catch (error) {
             res.status(500).send('Error sending emails');
         }
 
-    }
+    // }
         res.send("emails send successfully")
-
+        // const recipients = ['keshav_g1@ce.iitr.ac.in']
 
 });
 
